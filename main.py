@@ -1,19 +1,78 @@
+import csv
+from types import LambdaType
+
+# import pandas as pd
 import pygal
-import matplotlib.pyplot as plt
-import csv 
 from PIL import Image
+from pygal import style
+from pygal.style import Style
 
-#https://www.data.gouv.fr/fr/datasets/r/b62c05d2-6b45-44e0-80a4-6e10e3f14ec6 
+MAIN_DATA = "data/main_src.csv" #https://www.pygal.org/en/3.0.0/documentation/custom_styles.html
 
-fr_chart = pygal.maps.fr.Departments(human_readable=True)
-fr_chart.title = 'Population by department'
-fr_chart.add('In 2011', {
-  '01': 603827, '02': 541302, '03': 342729, '04': 160959, '05': 138605, '06': 1081244, '07': 317277, '08': 283110, '09': 152286, '10': 303997, '11': 359967, '12': 275813, '13': 1975896, '14': 685262, '15': 147577, '16': 352705, '17': 625682, '18': 311694, '19': 242454, '2A': 145846, '2B': 168640, '21': 525931, '22': 594375, '23': 122560, '24': 415168, '25': 529103, '26': 487993, '27': 588111, '28': 430416, '29': 899870, '30': 718357, '31': 1260226, '32': 188893, '33': 1463662, '34': 1062036, '35': 996439, '36': 230175, '37': 593683, '38': 1215212, '39': 261294, '40': 387929, '41': 331280, '42': 749053, '43': 224907, '44': 1296364, '45': 659587, '46': 174754, '47': 330866, '48': 77156, '49': 790343, '50': 499531, '51': 566571, '52': 182375, '53': 307031, '54': 733124, '55': 193557, '56': 727083, '57': 1045146, '58': 218341, '59': 2579208, '60': 805642, '61': 290891, '62': 1462807, '63': 635469, '64': 656608, '65': 229228, '66': 452530, '67': 1099269, '68': 753056, '69': 1744236, '70': 239695, '71': 555999, '72': 565718, '73': 418949, '74': 746994, '75': 2249975, '76': 1251282, '77': 1338427, '78': 1413635, '79': 370939, '80': 571211, '81': 377675, '82': 244545, '83': 1012735, '84': 546630, '85': 641657, '86': 428447, '87': 376058, '88': 378830, '89': 342463, '90': 143348, '91': 1225191, '92': 1581628, '93': 1529928, '94': 1333702, '95': 1180365, '971': 404635, '972': 392291, '973': 237549, '974': 828581, '976': 212645
-})
-fr_chart.render()
-# fr_chart.render_to_file('fr_chart.svg')
+NAME_TOT = "Total"
+NAME_DEPARTEMENT = "Département"
 
-# Image.open("fr_chart.jpg").show()
-# plt.imshow("fr_chart.svg")
-# plt.axis('off')
-# plt.show()
+
+def load_csv_file(file_name: str, name_department: str, name_value: str) -> dict[int, int | float]:
+    data = {}
+    with open(file_name) as opened_file:
+        csv_reader = csv.reader(opened_file, delimiter=';')
+        print("\t\t=> Data received")
+
+        print("\t- Formatting data...")
+        pos_value = None
+        pos_department = None
+
+        lines = 0
+        for row in csv_reader:
+            if lines == 0:
+                pos_value = row.index(name_value)
+                pos_department = row.index(name_department)
+            else:
+                if row[pos_department] not in data:
+                    data[row[pos_department]] = float(row[pos_value])
+                else:
+                    data[row[pos_department]] += float(row[pos_value])
+            lines += 1
+        return data
+
+def compute_data(data: dict, formula = lambda x:x) -> dict[int, int | float]:
+  for department in data:
+    data[department] = formula(data[department])
+
+  return data
+    
+
+
+if __name__ == "__main__":
+    print("--- DATA MAP VISUALIZATION ---")
+
+    print("\t- Initializing map...")
+    custom_style = Style(background='transparent',
+         plot_background='transparent',
+         foreground='#53E89B',
+         foreground_strong='#53A0E8',
+         foreground_subtle='#630C0D',
+         opacity='.6',
+         opacity_hover='.9',
+         transition='400ms ease-in',
+         colors=('#E853A0', '#E8537A', '#E95355', '#E87653',
+                 '#E89B53'))
+    fr_chart = pygal.maps.fr.Departments(human_readable=True, style=custom_style)
+    fr_chart.title = 'Licenciés par départment'
+    print("\t\t=> Map initialized")
+
+    print("\t- Requesting data...")
+    raw_data = load_csv_file(MAIN_DATA, NAME_DEPARTEMENT, NAME_TOT)
+    data = compute_data(raw_data)
+    print("\t\t=> Data formatted")
+
+    print("\t- Adding data to map...")
+    fr_chart.add('In 2021', data)
+    print("\t\t=> Data added to map")
+
+    print("\t- Generating HTML...")
+    fr_chart.render_to_file('templates/index.html')
+    print("\t\t=> HTML generated")
+
+    print("--- TASK FINISHED ---")

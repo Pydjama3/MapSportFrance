@@ -1,5 +1,8 @@
 {pkgs}: {
   deps = [
+    pkgs.wget
+    pkgs.glibcLocales
+    pkgs.xcodebuild
     pkgs.zlib
     pkgs.openjpeg
     pkgs.libxcrypt
