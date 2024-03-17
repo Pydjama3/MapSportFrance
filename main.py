@@ -39,7 +39,6 @@ def load_csv_file(file_name: str, name_department: str, name_value: str) -> dict
 def compute_data(data: dict, formula = lambda x:x) -> dict[int, int | float]:
   for department in data:
     data[department] = formula(data[department])
-
   return data
     
 
