@@ -1,5 +1,90 @@
-body{
-  background-repeat: repeat;
-  background-image: url(backround.png
-    );
-  }
+* {
+    box-sizing: border-box
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    background-repeat: repeat;
+    background-image: url("background.png");
+    backdrop-filter: blur(5px);
+    background-size: 70%;
+    padding: 30px;
+}
+
+.list-group-item:not(#adder) {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    /* height: 230px; */
+    cursor: move; 
+}
+
+.num {
+    display: flex;
+    flex-flow: column wrap;
+    width: 20%;
+}
+
+.num p {
+    font-size: 8cqmin;
+}
+
+.num > div {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.num > div > input {
+    width:10px;
+    flex: content;
+}
+
+.num > div > label{
+    flex: auto;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 150%;
+}
+/* 
+.num > div > label {
+    flex: content;
+    font-size: 25px;
+}
+
+.num > div > input {
+    flex: initial;
+} */
+
+.config-container {
+    width: 70%;
+    height: 250px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.config-container > div {
+    width: 50%;
+}
+
+h1 {
+    text-align: center;
+}
+
+#adder {
+    size: 100%;
+    opacity: 0.5;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#plot-adder {
+    font-size: 200%;
+    width:100%;
+    display:block;
+    border-radius: 0px 0px 20px 20px;
+    margin: 0px 0px;
+    padding: 0px;
+}

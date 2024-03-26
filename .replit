@@ -1,4 +1,4 @@
-entrypoint = "main.py"
+entrypoint = "app.py"
 modules = ["python-3.10:v18-20230807-322e88b"]
 
 hidden = [".pythonlibs"]
@@ -10,37 +10,255 @@ channel = "stable-23_05"
 language = "python3"
 
 [deployment]
-run = ["python3", "main.py"]
+run = ["python3", "app.py"]
 deploymentTarget = "cloudrun"
 
 [[ports]]
-localPort = 2006
+localPort = 80
 externalPort = 80
 
 [[ports]]
+localPort = 2006
+
+[[ports]]
+localPort = 2090
+
+[[ports]]
+localPort = 2203
+
+[[ports]]
+localPort = 2249
+
+[[ports]]
+localPort = 2397
+
+[[ports]]
+localPort = 2747
+
+[[ports]]
+localPort = 2826
+
+[[ports]]
+localPort = 2927
+
+[[ports]]
+localPort = 3017
+
+[[ports]]
+localPort = 3071
+
+[[ports]]
+localPort = 3073
+
+[[ports]]
+localPort = 3239
+
+[[ports]]
+localPort = 3376
+
+[[ports]]
+localPort = 3516
+
+[[ports]]
+localPort = 3529
+
+[[ports]]
+localPort = 3673
+
+[[ports]]
+localPort = 4026
+
+[[ports]]
+localPort = 4055
+
+[[ports]]
+localPort = 4096
+
+[[ports]]
+localPort = 4106
+
+[[ports]]
 localPort = 4290
-externalPort = 5000
+
+[[ports]]
+localPort = 4314
+
+[[ports]]
+localPort = 4403
+
+[[ports]]
+localPort = 4422
 
 [[ports]]
 localPort = 4479
-externalPort = 3003
+
+[[ports]]
+localPort = 4551
+
+[[ports]]
+localPort = 4600
+
+[[ports]]
+localPort = 4647
+
+[[ports]]
+localPort = 4687
+
+[[ports]]
+localPort = 4758
+
+[[ports]]
+localPort = 5087
+
+[[ports]]
+localPort = 5123
+
+[[ports]]
+localPort = 5149
+
+[[ports]]
+localPort = 5164
+
+[[ports]]
+localPort = 5177
+
+[[ports]]
+localPort = 5200
+
+[[ports]]
+localPort = 5250
+
+[[ports]]
+localPort = 5258
+
+[[ports]]
+localPort = 5342
+
+[[ports]]
+localPort = 5445
+
+[[ports]]
+localPort = 5457
+
+[[ports]]
+localPort = 5518
+
+[[ports]]
+localPort = 5638
+
+[[ports]]
+localPort = 5640
+
+[[ports]]
+localPort = 5656
+
+[[ports]]
+localPort = 5667
+
+[[ports]]
+localPort = 5836
 
 [[ports]]
 localPort = 5925
-externalPort = 5173
 
 [[ports]]
 localPort = 6297
-externalPort = 3000
+
+[[ports]]
+localPort = 6350
+
+[[ports]]
+localPort = 6466
+
+[[ports]]
+localPort = 6584
+
+[[ports]]
+localPort = 6672
+
+[[ports]]
+localPort = 6913
 
 [[ports]]
 localPort = 7020
-externalPort = 4200
+
+[[ports]]
+localPort = 7050
+
+[[ports]]
+localPort = 7165
+
+[[ports]]
+localPort = 7204
+
+[[ports]]
+localPort = 7215
+
+[[ports]]
+localPort = 7336
+
+[[ports]]
+localPort = 7384
+
+[[ports]]
+localPort = 7656
+
+[[ports]]
+localPort = 7746
+
+[[ports]]
+localPort = 7877
+
+[[ports]]
+localPort = 7888
+
+[[ports]]
+localPort = 7914
+
+[[ports]]
+localPort = 7936
+
+[[ports]]
+localPort = 7957
+
+[[ports]]
+localPort = 7958
+
+[[ports]]
+localPort = 7959
+
+[[ports]]
+localPort = 8021
+
+[[ports]]
+localPort = 8077
+
+[[ports]]
+localPort = 8146
+
+[[ports]]
+localPort = 8391
+
+[[ports]]
+localPort = 8511
+
+[[ports]]
+localPort = 8530
+
+[[ports]]
+localPort = 8567
+
+[[ports]]
+localPort = 8578
 
 [[ports]]
 localPort = 8609
-externalPort = 3002
 
 [[ports]]
 localPort = 8684
-externalPort = 3001
+
+[[ports]]
+localPort = 8796
+
+[[ports]]
+localPort = 8947
