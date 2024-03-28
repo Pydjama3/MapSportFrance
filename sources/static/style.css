@@ -2,16 +2,14 @@
     box-sizing: border-box
 }
 
-html, body {
-    height: 100vh;
-}
-
 body {
     background-repeat: repeat;
     background-image: url("background.png");
-    backdrop-filter: blur(5px);
-    background-size: 70%;
+    backdrop-filter: blur(8px);
+    background-size: 60%;
     padding: 30px;
+    height: 100%;
+    min-height: 100%
 }
 
 .list-group-item:not(#adder) {
@@ -49,15 +47,6 @@ body {
     vertical-align: middle;
     font-size: 150%;
 }
-/* 
-.num > div > label {
-    flex: content;
-    font-size: 25px;
-}
-
-.num > div > input {
-    flex: initial;
-} */
 
 .config-container {
     width: 70%;
@@ -70,7 +59,7 @@ body {
     width: 50%;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
 }
 
@@ -78,13 +67,20 @@ h1 {
     size: 100%;
     opacity: 0.5;
     border-radius: 0px 0px 20px 20px;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-#plot-adder {
+#adder > * {
     font-size: 200%;
-    width:100%;
-    display:block;
-    border-radius: 0px 0px 20px 20px;
+    width:50%;
     margin: 0px 0px;
     padding: 0px;
+    display:block;
+}
+
+img {
+    float: center;
+    max-width: 70%;
+    max-height: 70%;
 }

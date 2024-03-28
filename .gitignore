@@ -1,6 +1,7 @@
 __pycache__/
 **/.*
-templates/index.html
-data/*
+sources/templates/index.html
+sources/data/*
 
 !.gitkeep
+!README.md

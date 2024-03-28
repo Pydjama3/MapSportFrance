@@ -1,0 +1,15 @@
+Pour les données que nous avons utilisés:
+Population (INSEE): https://www.insee.fr/fr/statistiques/4265429?sommaire=4265511
+Licenciés (data.gouv.fr): https://www.data.gouv.fr/fr/datasets/donnees-geocodees-issues-du-recensement-des-licences-et-clubs-aupres-des-federations-sportives-agreees-par-le-ministere-charge-des-sports/
+
+Sources Code:
+Documentation Python: https://docs.python.org/3/ 
+Documentation Flask: https://flask.palletsprojects.com/en/3.0.x/
+W3Schools: https://www.w3schools.com/
+GeeksForGeeks: https://www.geeksforgeeks.org/
+Bootstrap (Official Website): https://getbootstrap.com/
+Stack Overflow: https://stackoverflow.com/
+GitHub: https://github.com/
+MDN Mozilla: https://developer.mozilla.org/fr/
+
+Background généré par DALL-E 2: https://openai.com/dall-e-2 

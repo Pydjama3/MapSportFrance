@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Géograph - France</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+    <body>
+      <h1>Géo<i>graph</i> - Tableau de configuration</h1>
+        <h2>Edition Jeux Olympiques 2024</h2>
+        <p>&nbsp;Bienvenue sur l'interface de configuration de GEO<i>graph</i>, un outil "dernier cri" qui révolutionnera sans doute le monde des statistiques en France (légère ironie): cette application vous permet de visualier des donnnées sur la carte de la France !
+            <br>
+            Pour cela, vous devez suivre le étapes suivantes:
+            <ol>
+                <li>Placer les fichiers (.csv) de données dans le dossier "sources/data".</li>
+                <li>Ajouter les jeux de données que vous voulez afficher . Attention, il n'est pas possible d'afficher plusieurs données pour un même département; l'affichage de plusieurs données permet, par exemple, d'afficher les valeurs pour certains départments, dans une autre couleurs que les autres:</li>
+                <ol type="a">
+                    <li>Si vous voulez ajouter des données à partir d'un fichier, appuyez sur ".csv" en bas de la page.</li>
+                    <li>Si vous voulez calculer des valeurs à partir de d'autres jeux données, appuyez sur "f(x)="</li>
+                </ol>
+                <li>Configurer les champs qui vous sont proposés: légende (comment ces données seront légendées sur la carte), nom du fichier source, en-têtes (nom en haut des colonnes concernants les 
+codes des départements ou les valeurs), etc...</li>
+                <li>Donner un titre global à votre magnifique croquis</li>
+                <li>Enfin, appyer sur "Générer !" pour voir le résultat ! (un peu de patience après, nos serveurs croulent sous la demande ^_^)</li>
+            </ol>
+        </p>
+        <h3>
+            Vous obtiendrez peut-être le résultat suivant (Note: la carte est interactible sur Firefox):
+        </h3>
+        <img src="static/exemple.png" alt="Exemple de résultat">
+        <form action="/carte" target="_blank" method="POST">
+            <br>
+            <div class="form-group">
+                <label for="globalTitle">Titre global du croquis:</label>
+                <input type="text" class="form-control" placeholder="Croquis sans titre" id="globalTitle" name="globalTitle" required>
+            </div>
+            <div class="list-group" id="config-list">
+                <div class="list-group-item locked" id="adder">
+                    <button type="button" id="plot-adder" class="btn btn-light" onclick="addItem('file')">
+                        <b>.csv</b>
+                    </button>
+                    <button type="button" id="plot-adder" class="btn btn-light" onclick="addItem('formula')">
+                        <b>f(x)=</b>
+                    </button>
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Générer !">
+        </form>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <script src="static/graph_configurator.js"></script>
+</html>
